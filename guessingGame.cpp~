@@ -1,0 +1,66 @@
+#include <iostream>
+
+using namespace std;
+
+void invalidInput();
+void endInput();
+
+int main() {
+
+  bool game = true;
+  int input = 0;
+  int guesses = 0;
+  char input2 = 'a';
+  
+  srand(time(0));
+  int number = (rand() % 101); 
+  cout << "Enter a number from 0-100." << endl;
+  cout << number << endl;
+  
+  while (game == true) {
+    cin >> input;
+    if (input < 0 || input > 100 || cin.fail()) {
+      invalidInput();
+    }
+    else if (input < number) {
+      cout << "Too low!" << endl;
+      guesses++;
+    }
+    else if (input > number) {
+      cout << "Too high!" << endl;
+      guesses++;
+    }
+    else if (input == number) {
+      guesses++;
+      cout << "Correct! The number was " << number << ", and you won in " << guesses << " guesses." << endl;
+      game = false;
+
+      cout << "Would you like to play again? (y/n)" << endl;
+      cin >> input2;
+    }
+  }
+  return 0;
+}
+
+void invalidInput() {
+  cout << "Invalid input! Try again!" << endl;
+  cin.clear();
+  cin.ignore(10000,'\n');
+}
+
+void endInput() {
+  if (input2 == 'y') {
+     number = (rand() % 101);
+     guesses = 0;
+     cout << "Enter a number from 0-100." << endl;
+     game = true;
+   }
+   else if (input2 == 'n') {
+     cout << "Bye!" << endl;
+     break;
+   }
+   else {
+     invalidInput();
+     endInput();
+   }
+}
