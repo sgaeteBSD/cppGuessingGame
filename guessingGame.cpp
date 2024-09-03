@@ -1,8 +1,9 @@
 /*
  * C++ Guessing Game
+ * Try to guess the random number from 1-100 in the least tries possible.
  * 9/3/2024
  * Santiago Gaete
- * 1. No global variables. 2. No strings. 3. Use <iostream>
+ * Class rules for C++: 1. No global variables. 2. No strings. 3. Use <iostream>
  */
 
 #include <iostream>
